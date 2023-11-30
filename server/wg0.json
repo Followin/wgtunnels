@@ -1,0 +1,19 @@
+{
+  "server": {
+    "privateKey": "aKJ9Q7m44CiVaD3bsQ+QaQpdnK8wRnuF1XBITDxu4Ww=",
+    "publicKey": "DAcaIPANTFdVEkEg1Y6N073vkBmhzXE/EQIdCl9oJR0=",
+    "address": "10.8.0.1"
+  },
+  "clients": {
+    "23db8ae9-3c60-4e5e-9c30-863433e902b2": {
+      "name": "client-1",
+      "address": "10.8.0.2",
+      "privateKey": "SGvMmtMM1lFVdby+dTmgVFaURTe+dGs2O8oECw2opFU=",
+      "publicKey": "s7ZIAXat1csy6Janyjvxq3iT9y9LooJIdFdP+FSC/xs=",
+      "preSharedKey": "chfpDV6k0vQL9o8g3IReqE0cAwL8MLX4kmdbkexAFCA=",
+      "createdAt": "2023-11-30T14:40:06.678Z",
+      "updatedAt": "2023-11-30T14:40:06.678Z",
+      "enabled": true
+    }
+  }
+}

@@ -1,0 +1,53 @@
+networks:
+  wgnet:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24
+          gateway: 10.10.0.1
+
+services:
+  wg-server:
+    networks:
+      wgnet:
+        ipv4_address: 10.10.0.2
+    container_name: wg-server
+    build:
+      dockerfile: ./server.dockerfile
+    environment:
+      - WG_HOST=10.10.0.2
+      - PASSWORD=testjkl123
+    ports:
+      - 51820:51820/udp
+      - 51821:51821/tcp
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.ip_forward=1
+    volumes:
+      - ./server:/etc/wireguard
+  wg-client:
+    networks:
+      wgnet:
+        ipv4_address: 10.10.0.3
+    container_name: wg-client
+    build:
+      dockerfile: ./client.dockerfile
+    depends_on: 
+      - wg-server
+    cap_add:
+      - NET_ADMIN
+      - SYS_MODULE
+    sysctls:
+      - net.ipv4.conf.all.src_valid_mark=1
+      - net.ipv4.ip_forward=1
+    volumes:
+      - ./client:/etc/wireguard
+  test-api:
+    networks:
+      wgnet:
+        ipv4_address: 10.10.0.4
+    container_name: test-api
+    image: testcontainers/helloworld
