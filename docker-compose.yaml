@@ -18,8 +18,7 @@ services:
       - WG_HOST=10.10.0.2
       - PASSWORD=testjkl123
     ports:
-      - 51820:51820/udp
-      - 51821:51821/tcp
+      - 8080:8080/tcp
     cap_add:
       - NET_ADMIN
       - SYS_MODULE
