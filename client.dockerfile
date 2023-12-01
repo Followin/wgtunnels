@@ -6,5 +6,5 @@ CMD \
   && iptables -A INPUT -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT \
   && iptables -A INPUT -j DROP \
   && iptables -A FORWARD -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT \
-  && iptables -A INPUT -j DROP \
-  && { sleep 1; ping -c 1 10.8.0.1; } & /sbin/init
+  && iptables -A FORWARD -j DROP \
+  && /sbin/init
